@@ -11,9 +11,50 @@
             padding: 0;
         }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(52, 152, 219, 0), 0 3px 10px rgba(0,0,0,0.08);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(52, 152, 219, 0.3), 0 6px 20px rgba(0,0,0,0.12);
+            }
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f0f2f5;
+            background: linear-gradient(135deg, #f0f2f5 0%, #e9ecef 100%);
             padding: 15px;
             min-height: 100vh;
         }
@@ -25,87 +66,121 @@
 
         h1 {
             text-align: center;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 22px;
+            color: #1a202c;
+            margin-bottom: 30px;
+            font-size: 28px;
+            animation: slideInDown 0.6s ease-out;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         /* ===== Form ===== */
         .form-card {
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            padding: 15px;
-            margin-bottom: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            padding: 24px;
+            margin-bottom: 30px;
+            animation: slideInDown 0.6s ease-out;
+            border: 1px solid rgba(255,255,255,0.8);
         }
 
         .form-card h2 {
-            font-size: 16px;
-            color: #34495e;
-            margin-bottom: 12px;
+            font-size: 18px;
+            color: #1a202c;
+            margin-bottom: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .image-picker {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-            padding: 10px;
-            border: 2px dashed #bdc3c7;
-            border-radius: 8px;
+            gap: 16px;
+            margin-bottom: 18px;
+            padding: 16px;
+            border: 2px dashed #cbd5e0;
+            border-radius: 12px;
             cursor: pointer;
-            transition: border-color 0.2s;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
         }
 
         .image-picker:hover {
-            border-color: #3498db;
+            border-color: #667eea;
+            background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+            transform: translateY(-2px);
         }
 
         .image-picker img {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 10px;
             background: #ecf0f1;
             display: none;
+            border: 3px solid #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
 
         .image-picker .placeholder-icon {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #ecf0f1;
-            border-radius: 8px;
-            font-size: 30px;
-            color: #95a5a6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            font-size: 36px;
+            color: white;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .image-picker:hover .placeholder-icon {
+            transform: scale(1.1);
         }
 
         .image-picker .label-text {
-            font-size: 13px;
-            color: #7f8c8d;
+            font-size: 14px;
+            color: #4a5568;
+            flex: 1;
+        }
+
+        .image-picker .label-text strong {
+            display: block;
+            color: #1a202c;
+            margin-bottom: 4px;
+            font-size: 15px;
         }
 
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 12px;
+            gap: 14px;
+            margin-bottom: 16px;
         }
 
         .form-grid input {
             width: 100%;
-            padding: 11px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            padding: 13px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
             font-size: 14px;
             outline: none;
-            transition: border 0.2s;
+            transition: all 0.3s ease;
+            background: white;
+            color: #1a202c;
         }
 
         .form-grid input:focus {
-            border-color: #3498db;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
         }
 
         .form-grid input.full {
@@ -114,46 +189,80 @@
 
         .add-btn {
             width: 100%;
-            padding: 13px;
-            background: #27ae60;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 600;
-            transition: background 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
-        .add-btn:hover {
-            background: #219150;
+        .add-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .add-btn:active:not(:disabled) {
+            transform: translateY(0);
         }
 
         .add-btn:disabled {
-            background: #95a5a6;
+            background: linear-gradient(135deg, #cbd5e0 0%, #a0aec0 100%);
             cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .add-btn.loading {
+            animation: pulse 1.5s infinite;
         }
 
         /* ===== Product grid ===== */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
         }
 
         .product-card {
             background: white;
-            border-radius: 14px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeIn 0.5s ease-out;
+            border: 1px solid rgba(255,255,255,0.8);
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0) 0%, rgba(102, 126, 234, 0) 100%);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .product-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        .product-card:hover::before {
+            opacity: 0.1;
         }
 
         .product-image {
@@ -162,115 +271,172 @@
             object-fit: cover;
             background: #ecf0f1;
             display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.08);
         }
 
         .product-image-placeholder {
             width: 100%;
             aspect-ratio: 4 / 3;
-            background: linear-gradient(135deg, #ecf0f1, #d5dbdb);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 50px;
-            color: #95a5a6;
+            font-size: 60px;
+            color: rgba(255,255,255,0.8);
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image-placeholder {
+            transform: scale(1.08);
         }
 
         .product-info {
-            padding: 12px 14px 14px;
+            padding: 16px 18px 16px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
             flex: 1;
+            position: relative;
+            z-index: 2;
         }
 
         .product-name {
-            font-size: 16px;
-            font-weight: 600;
-            color: #2c3e50;
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a202c;
             line-height: 1.3;
+            word-break: break-word;
         }
 
         .product-price {
-            font-size: 18px;
-            font-weight: 700;
-            color: #27ae60;
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .product-meta {
-            font-size: 12.5px;
-            color: #7f8c8d;
+            font-size: 13px;
+            color: #718096;
             display: flex;
             align-items: center;
-            gap: 5px;
-            line-height: 1.4;
+            gap: 6px;
+            line-height: 1.5;
+            word-break: break-word;
         }
 
         .product-meta span.icon {
-            font-size: 13px;
+            font-size: 14px;
+            flex-shrink: 0;
         }
 
         .product-actions {
-            margin-top: 8px;
+            margin-top: 12px;
             display: flex;
-            gap: 8px;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
         }
 
         .call-btn {
             flex: 1;
-            padding: 8px;
-            background: #3498db;
+            padding: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-align: center;
-            border-radius: 6px;
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             border: none;
             cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
         }
 
         .call-btn:hover {
-            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .call-btn:active {
+            transform: translateY(0);
         }
 
         .delete-btn {
-            background: #ecf0f1;
+            background: #fee;
             color: #e74c3c;
             border: none;
-            padding: 8px 12px;
-            border-radius: 6px;
+            padding: 10px 12px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 16px;
             font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(231, 76, 60, 0.2);
         }
 
         .delete-btn:hover {
             background: #fdecea;
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(231, 76, 60, 0.2);
         }
 
         /* ===== Status ===== */
         .status {
             text-align: center;
-            padding: 30px 15px;
-            color: #7f8c8d;
-            font-size: 14px;
+            padding: 40px 20px;
+            color: #718096;
+            font-size: 15px;
+            animation: fadeIn 0.5s ease-out;
         }
 
         .status.error {
             color: #e74c3c;
         }
 
+        .status-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
         @media (max-width: 500px) {
+            h1 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
             .form-grid {
                 grid-template-columns: 1fr;
             }
+
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
                 gap: 12px;
             }
+
             .product-name { font-size: 14px; }
             .product-price { font-size: 16px; }
-            .product-info { padding: 10px; }
+            .product-info { padding: 12px; }
+            .image-picker {
+                gap: 12px;
+                padding: 12px;
+            }
+            .image-picker .placeholder-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+            }
+            .image-picker img {
+                width: 60px;
+                height: 60px;
+            }
         }
     </style>
 </head>
@@ -280,15 +446,15 @@
 
         <!-- Add Product Form -->
         <div class="form-card">
-            <h2>Add New Product</h2>
+            <h2>✨ Add New Product</h2>
 
             <!-- Image Picker -->
             <label class="image-picker" for="imageInput">
                 <div class="placeholder-icon" id="pickerIcon">📷</div>
                 <img id="imagePreview" alt="Preview">
                 <div class="label-text">
-                    <strong>Tap to add a photo</strong><br>
-                    <span style="font-size:11px;">Choose from gallery or camera</span>
+                    <strong>Tap to add a photo</strong>
+                    <span style="font-size:12px;">Choose from gallery or camera</span>
                 </div>
             </label>
             <input type="file" id="imageInput" accept="image/*" style="display:none;">
@@ -305,7 +471,10 @@
 
         <!-- Products Grid -->
         <div id="productsGrid" class="products-grid"></div>
-        <div id="statusMessage" class="status">Loading products...</div>
+        <div id="statusMessage" class="status">
+            <div class="status-icon">📦</div>
+            Loading products...
+        </div>
     </div>
 
     <!-- Firebase SDK -->
@@ -413,7 +582,7 @@
         function renderProducts(snapshot) {
             grid.innerHTML = '';
             if (snapshot.empty) {
-                statusMessage.textContent = 'No products yet. Add your first one above!';
+                statusMessage.innerHTML = '<div class="status-icon">🎯</div>No products yet. Add your first one above!';
                 statusMessage.className = 'status';
                 statusMessage.style.display = 'block';
                 return;
@@ -437,8 +606,8 @@
                         <div class="product-meta"><span class="icon">📍</span> ${escapeHtml(data.location)}</div>
                         <div class="product-meta"><span class="icon">📞</span> ${escapeHtml(data.phone)}</div>
                         <div class="product-actions">
-                            <a class="call-btn" href="tel:${escapeHtml(data.phone)}">Call</a>
-                            <button class="delete-btn" data-id="${docSnap.id}" data-image="${escapeHtml(data.imagePath || '')}">🗑️</button>
+                            <a class="call-btn" href="tel:${escapeHtml(data.phone)}">📞 Call</a>
+                            <button class="delete-btn" data-id="${docSnap.id}" data-image="${escapeHtml(data.imagePath || '')}" title="Delete product">🗑️</button>
                         </div>
                     </div>
                 `;
@@ -468,7 +637,7 @@
         const q = query(productsCollection, orderBy('createdAt', 'desc'));
         onSnapshot(q, renderProducts, (error) => {
             console.error(error);
-            statusMessage.textContent = 'Error loading products.';
+            statusMessage.innerHTML = '<div class="status-icon">⚠️</div>Error loading products.';
             statusMessage.className = 'status error';
             statusMessage.style.display = 'block';
         });
@@ -486,7 +655,8 @@
             }
 
             addBtn.disabled = true;
-            addBtn.textContent = 'Uploading...';
+            addBtn.classList.add('loading');
+            addBtn.textContent = '⏳ Uploading...';
 
             try {
                 let imageUrl = null;
@@ -525,6 +695,7 @@
                 alert('Failed to add product. See console for details.');
             } finally {
                 addBtn.disabled = false;
+                addBtn.classList.remove('loading');
                 addBtn.textContent = '➕ Add Product';
             }
         }
